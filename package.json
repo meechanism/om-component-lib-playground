@@ -4,6 +4,7 @@
   "description": "a playground for experimenting with a component library",
   "main": "server.js",
   "scripts": {
+    "postinstall": "./scripts/postinstall.sh",
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server --hot --inline",
     "dev:debug": "webpack-dev-server --hot --inline --debug",

@@ -1,5 +1,10 @@
 # React Component Library Playground for onestyleguide
 
+Note: `onestyleguide` is a private repository. This project can be edited to
+suit your own needs, but the setup instructions below are for my own purposes.
+
+- https://github.com/wrsinc/onestyleguide
+
 ### OVERIVEW
 
 This is a playground for experimenting with a component library. This is intended to provide:
@@ -20,6 +25,7 @@ Since this project was meant to be tested with various packages in the
 
 - om-react-components
 - one-base
+- one-utilities (icons)
 
 To symlink the above:
 

@@ -8,9 +8,13 @@ const App = ({ name }) => {
   function doClick(e) {
     console.log("clicked");
   }
+
+  function closeAlert(e) {
+    console.log("close alert");
+  }
   return (
     <div>
-      <h1>Buttons</h1>
+      <h1>Buttons :B</h1>
       <Button  onClick={doClick}>Normal Button (clickme)</Button>
 
       <Button primary>Primary</Button>
@@ -36,6 +40,17 @@ const App = ({ name }) => {
 
       <hr />
       <h1>Alerts</h1>
+
+
+      {/* todo: get fontawesome to work */}
+      <Alert type="info">
+        <span className="alert-dismiss" onClick={closeAlert}>
+          x
+        </span>
+        <h2>Closable</h2>
+        <p>You can close me.</p>
+      </Alert>
+
       <Alert type="info">
         <h2>My Littlest Cookie</h2>
         <p>Prep was at noon, and she was baked and cooled at two.</p>
