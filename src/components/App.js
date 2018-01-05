@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Alert } from 'om-react-components';
+import { Button, Alert, Close } from 'om-react-components';
 
 
 
@@ -44,9 +44,7 @@ const App = ({ name }) => {
 
       {/* todo: get fontawesome to work */}
       <Alert type="info">
-        <span className="alert-dismiss" onClick={closeAlert}>
-          x
-        </span>
+        <Close><i className="fa fa-times" aria-hidden="true"></i></Close>
         <h2>Closable</h2>
         <p>You can close me.</p>
       </Alert>

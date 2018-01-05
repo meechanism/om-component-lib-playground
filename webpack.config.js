@@ -1,12 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const buildIndexConfig = new HTMLWebpackPlugin({
+  template: __dirname + '/src/assets/templates/index.html',
+  filename: 'index.html'
+});
+
 
 module.exports = {
   entry: [
-    './src/index'
+    './src/index',
+    './src/assets/stylesheets/base.scss'
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?$/,
         loader: 'babel-loader?sourceMap',
@@ -14,7 +23,17 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        loader: 'style-loader!css-loader?sourceMap!sass-loader?sourceMap' ,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader?sourceMap',
+          use: [
+            {
+              loader: 'css-loader?sourceMap'
+            },
+            {
+              loader: 'sass-loader?sourceMap',
+            }
+          ],
+        })
       },
     ]
   },
@@ -31,6 +50,8 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin("styles.css"),
+    buildIndexConfig
   ]
 };
