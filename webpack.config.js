@@ -1,57 +1,49 @@
-const webpack = require('webpack');
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const buildIndexConfig = new HTMLWebpackPlugin({
-  template: __dirname + '/src/assets/templates/index.html',
-  filename: 'index.html'
+  template: __dirname + "/src/assets/templates/index.html",
+  filename: "index.html"
 });
 
-
 module.exports = {
-  entry: [
-    './src/index',
-    './src/assets/stylesheets/base.scss'
-  ],
+  entry: ["./src/index"],
   module: {
-    rules: [
+    loaders: [
       {
-        test: /\.js?$/,
-        loader: 'babel-loader?sourceMap',
-        exclude: /node_modules/
+        test: /\.jsx?$/,
+        loader: "babel-loader",
+        query: {
+          cacheDirectory: true,
+          presets: ["react", "es2015"]
+        }
       },
       {
         test: /\.s?css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader?sourceMap',
-          use: [
-            {
-              loader: 'css-loader?sourceMap'
-            },
-            {
-              loader: 'sass-loader?sourceMap',
-            }
-          ],
-        })
-      },
+        use: ["style-loader", "css-loader", "sass-loader"],
+        include: [path.resolve(__dirname, "node_modules")]
+      }
     ]
   },
   output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.join(__dirname, "/dist"),
+    publicPath: "/",
+    filename: "bundle.js"
   },
-  devtool: 'cheap-eval-source-map',
+  devtool: "cheap-eval-source-map",
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     hot: true
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin("styles.css"),
     buildIndexConfig
-  ]
+  ],
+  resolve: {
+    extensions: [".css", ".scss", ".js"],
+    modules: [path.resolve(__dirname, "node_modules")]
+  }
 };
