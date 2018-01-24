@@ -10,19 +10,18 @@ const buildIndexConfig = new HTMLWebpackPlugin({
 module.exports = {
   entry: ["./src/index"],
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        loader: "babel-loader",
-        query: {
-          cacheDirectory: true,
-          presets: ["react", "es2015"]
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: "babel-loader"
         }
       },
       {
         test: /\.s?css$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-        include: [path.resolve(__dirname, "node_modules")]
+        // if we need to include, do so with @import
+        use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },

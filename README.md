@@ -1,9 +1,9 @@
-# React Component Library Playground for onestyleguide
+# React Component Library Playground for the OneMarket componnent lib
 
-Note: `onestyleguide` is a private repository. This project can be edited to
-suit your own needs, but the setup instructions below are for my own purposes.
+Note: `wrsinc/componentlib` is a private repository. However, this project can
+be edited to suit your own needs.
 
-- https://github.com/wrsinc/onestyleguide
+- https://github.com/wrsinc/componentlib/
 
 ### OVERIVEW
 
@@ -16,34 +16,28 @@ This is a playground for experimenting with a component library. This is intende
 
 _*NOTE:* This app is based on Alan Smith's [React + Node Starter](https://github.com/alanbsmith/react-node-example)._
 
----
 
-## Link to your library
+# Install / Setup
+
+
+1. If you want to test against wrsinc/component lib, go clone that rep.
+2. Come back to this repo. Install dependencies: `$ npm install` or `$ yarn`
+3. Fire up a development server: `$ npm run dev`
+
+Once the server is running, you can visit: `http://localhost:8080/`
+
+## Development
 
 Since this project was meant to be tested with various packages in the
-`onestyleguide` mono repo, we will need to `npm link` the following packages:
+`componentlib` mono repo, we will need to `npm link` some of the `@westfield`
+project dependencies. There's a script you can use to do that. From root:
 
-- om-react-components
-- one-base
-- one-utilities (icons)
+```sh
+$ npm run symlink
+```
 
-To symlink the above:
+Note: If you do not symlink, then the project will use the packages from npm.
 
-1. Go to root of each package above and run `npm link`
-2. Go to root of _this_ repo and run `npm link PACKAGENAME`
-
-We are ready to use our component library in the playground! Once the packages
-above are available on npm, we will not need to do this manual linking and can
-instead make them be dependencies of this project.
-
----
-
-## UP & RUNNING
-
-* Install dependencies: `$ npm install` or `$ yarn`
-* Fire up a development server: `$ npm run dev`
-
-Once the server is running, you can visit `http://localhost:8080/`
 
 ---
 

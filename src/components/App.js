@@ -5,7 +5,8 @@ import {
   Alert,
   ButtonCombo,
   BasicAutocomplete,
-  WrappedInputLabel
+  WrappedInputLabel,
+  DatePicker
 } from "@westfield/om-react-components";
 
 const App = ({ name }) => {
@@ -21,11 +22,21 @@ const App = ({ name }) => {
   const comboOptions2 = ["Skittle", "Snickers", "Twix"];
   return (
     <div>
-      <h1>Combo button</h1>
+      <h1>Basic BasicAutocomplete</h1>
       <BasicAutocomplete
+        placeholder={"Select your fruit"}
         items={["apple", "orange", "carrot"]}
         onChange={selectedItem => console.log(selectedItem)}
       />
+      <hr />
+
+      <h1>Date Picker</h1>
+      <DatePicker label={"Select a Date"} />
+
+      <hr />
+
+      <h1>Combo button</h1>
+
       <ButtonCombo primary label="Starches" options={comboOptions} />
       <ButtonCombo secondary label="Candy Bars" options={comboOptions2} />
 
