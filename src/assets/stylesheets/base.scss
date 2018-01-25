@@ -1,2 +1,7 @@
 // Use ~ to let compiler know to look at node_modules
+
+// Resets, base typography styles, line heights, size, etc
 @import "~@westfield/one-base/index.scss";
+
+// Font icons ;)
+@import "~@westfield/one-utilities/index.scss";
