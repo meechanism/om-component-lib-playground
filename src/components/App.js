@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {
   Button,
   Alert,
-  ButtonCombo,
+  // ButtonCombo,
   BasicAutocomplete,
   WrappedInputLabel,
   DatePicker
@@ -37,8 +37,8 @@ const App = ({ name }) => {
 
       <h1>Combo button</h1>
 
-      <ButtonCombo primary label="Starches" options={comboOptions} />
-      <ButtonCombo secondary label="Candy Bars" options={comboOptions2} />
+      {/* <ButtonCombo primary label="Starches" options={comboOptions} /> */}
+      {/* <ButtonCombo secondary label="Candy Bars" options={comboOptions2} /> */}
 
       <hr />
       <h1>Buttons</h1>
