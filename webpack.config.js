@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const buildIndexConfig = new HTMLWebpackPlugin({
   template: __dirname + "/src/assets/templates/index.html",
@@ -8,7 +9,7 @@ const buildIndexConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-  entry: ["./src/index"],
+  entry: ["./src/index", "./src/assets/stylesheets/base.scss"],
   module: {
     rules: [
       {
@@ -20,8 +21,18 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        // if we need to include, do so with @import
-        use: ["style-loader", "css-loader", "sass-loader"]
+
+        // https://github.com/webpack-contrib/sass-loader/issues/69
+        // include seems to breack all te things
+        // exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader", "sass-loader"]
+        })
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       }
     ]
   },
@@ -39,6 +50,8 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new ExtractTextPlugin("[name].css"),
+
     buildIndexConfig
   ],
   resolve: {
