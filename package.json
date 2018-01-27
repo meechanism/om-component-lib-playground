@@ -9,6 +9,7 @@
     "build": "webpack --config webpack.prod.config.js",
     "dev": "webpack-dev-server --hot --inline",
     "build:watch": "webpack --config webpack.config.js && webpack-dev-server --hot --inline",
+    "build:prod:watch": "webpack --config webpack.prod.config.js && webpack-dev-server --inline",
     "dev:debug": "webpack-dev-server --hot --inline --debug",
     "lint": "eslint src/**",
     "lint:watch": "esw -w src/**",

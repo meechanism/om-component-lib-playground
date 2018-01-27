@@ -24,6 +24,7 @@ const App = ({ name }) => {
     <div>
       <h1>Basic BasicAutocomplete</h1>
       <BasicAutocomplete
+        label={"Favorite Fruit"}
         placeholder={"Select your fruit"}
         items={["apple", "orange", "carrot"]}
         onChange={selectedItem => console.log(selectedItem)}
@@ -31,7 +32,7 @@ const App = ({ name }) => {
       <hr />
 
       <h1>Date Picker</h1>
-      <DatePicker label={"Select a Date"} />
+      <DatePicker label={"Select a Date"} options={{ dateFormat: "m-d-Y " }} />
 
       <hr />
 
