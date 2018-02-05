@@ -56,7 +56,7 @@ class App extends React.Component {
           contentLabel="Example Modal"
         >
           <ModalHeader onClose={this.handleCloseModal}>
-            {/* Header About cats and other relevant things */}
+            Header About cats and other relevant things
           </ModalHeader>
           <ModalBody>
             <p>
@@ -88,7 +88,6 @@ class App extends React.Component {
         <h1>Basic BasicAutocomplete</h1>
         <BasicAutocomplete
           label={"Favorite Fruit"}
-          placeholder={"Select your fruit"}
           items={["apple", "orange", "carrot"]}
           onChange={selectedItem => console.log(selectedItem)}
         />
@@ -158,16 +157,8 @@ class App extends React.Component {
 
         <hr />
         <h1>Input/Forms</h1>
-        <WrappedInputLabel
-          label={"Name"}
-          placeholder={"Patricia Henderson"}
-          required
-        />
-        <WrappedInputLabel
-          label={"Email"}
-          placeholder={"pat.henderson@gmail.com"}
-          type={"email"}
-        />
+        <WrappedInputLabel label={"Name"} required />
+        <WrappedInputLabel label={"Email"} type={"email"} />
 
         <WrappedInputLabel
           disabled
