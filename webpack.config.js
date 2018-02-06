@@ -20,10 +20,6 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-
-        // https://github.com/webpack-contrib/sass-loader/issues/69
-        // include seems to breack all te things
-        // exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ["css-loader", "sass-loader"]
@@ -54,7 +50,7 @@ module.exports = {
     buildIndexConfig
   ],
   resolve: {
-    extensions: [".css", ".scss", ".js"],
-    modules: [path.resolve(__dirname, "node_modules")]
+    extensions: [".css", ".scss", ".js", ".jsx"],
+    modules: [path.join(__dirname, "node_modules")]
   }
 };
