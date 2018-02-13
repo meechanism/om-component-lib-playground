@@ -19,8 +19,9 @@ _*NOTE:* This app is based on Alan Smith's [React + Node Starter](https://github
 
 # Install / Setup
 
+## Using packages on npm
 
-1. If you want to test against wrsinc/component lib, go clone that rep.
+1. If you want to test against `wrsinc/component` lib, go clone that repo.
 2. Come back to this repo. Install dependencies: `$ npm install` or `$ yarn`
 3. Fire up a development server: `$ npm run dev`
 
@@ -28,54 +29,36 @@ Once the server is running, you can visit: `http://localhost:8080/`
 
 ## Development
 
-Since this project was meant to be tested with various packages in the
-`componentlib` mono repo, we will need to `npm link` some of the `@westfield`
-project dependencies. There's a script you can use to do that. From root:
+
+If you want to test against your currently checked out packages for `componentlib`,
+you will need to `npm link` some of the `@westfield` project dependencies.
+There's a script you can use to do that. From root:
+
+
+*Pre-requisite*: from `componentlib` root, run: `npm run symlink`. This will
+_begin_ the symlinking process. The below will complete it.
+
+Run the below from `om-component-lib-playground` root:
 
 ```sh
 $ npm run symlink
 ```
 
-Note: If you do not symlink, then the project will use the packages from npm.
+If you want to just install and symlink at the same time, run this script:
 
-
----
-
-## Linting
-
-_This assumes you have eslint and eslint-watch installed. If you don't, run the following:_
-```
-$ npm i -g eslint eslint-watch
-```
-or if you need permissions:
-```
-$ sudo npm i -g eslint eslint-watch
+```sh
+$ npm run dev:install
 ```
 
-To run the linter once:
-```
-$ npm run lint
-```
+Notes:
 
-To run the watch task:
-```
-$ npm run lint:watch
-```
----
-
-## Testing
-
-To run the tests:
-```
-$ npm test
-```
+- If you do not symlink, then the project will use the packages from npm.
+- If you install any package after symlinking, you will need to symlink again as
+    they will be removed.
+- Make sure you have your expected `componentlib` branch checked out for which
+    you wish to test against. Also make sure you have ran `npm run bootstrap` on
+    it.
 
 ---
 
-## Production Build
-
-To build your production assets and run the server:
-```
-$ npm start
-```
 

@@ -3,14 +3,17 @@ import PropTypes from "prop-types";
 import {
   Button,
   Alert,
-  // ButtonCombo,
   BasicAutocomplete,
   WrappedInputLabel,
   DatePicker,
   Modal,
   ModalHeader,
   ModalBody,
-  Close
+  Close,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  RadioGroupHeader
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -20,20 +23,23 @@ class App extends React.Component {
     super(props);
     this.state = {
       showModalWithHeader: false,
-      showModalWithNoHeader: false
+      showModalWithNoHeader: false,
+      selected: 0
     };
 
     this.comboOptions = ["Potato", "Corn", "Radish"];
     this.comboOptions2 = ["Skittle", "Snickers", "Twix"];
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+
+    this.ramenOptions = ["Onsen Egg", "Bamboo Shoots", "Pork Belly", "Enoki"];
   }
 
   doClick(e) {
-    console.log("clicked");
+    console.log("[sandbox] clicked");
   }
 
-  handleOpenModal(modalName) {
+  handleOpenModal() {
     this.setState({ showModal: true });
   }
 
@@ -41,9 +47,61 @@ class App extends React.Component {
     this.setState({ showModal: false });
   }
 
+  // For checkbox change events
+  handleCheckboxChange(e, props) {
+    console.log("[sandbox] handleCheckboxChange: ", props);
+  }
+
+  // for radio button change events
+  handleOptionChange = (e, props) => {
+    console.log("[sandbox] handleOptionChange: ", props);
+  };
+
   render() {
     return (
       <div>
+        <h1>Checkbox</h1>
+        {/* Only the first contains state management */}
+        <Checkbox
+          id={"hotdogCheck"}
+          label={"Hot dog"}
+          onChange={this.handleCheckboxChange.bind(this)}
+        />
+        <Checkbox
+          id={"baconCheck"}
+          label={"Bacon (pre-checked)"}
+          isSelected={true}
+        />
+        <Checkbox
+          id={"disabledCheck"}
+          label={"Turkey breast (Disabled)"}
+          isDisabled={true}
+        />
+        <Checkbox
+          id={"disabledPreCheck"}
+          label={"Roast beef (Disabled but pre-checked)"}
+          checked={true}
+          isDisabled={true}
+        />
+
+        <h1>Radio</h1>
+        <RadioGroup name={"veggie-option"}>
+          <RadioGroupHeader>Veggies</RadioGroupHeader>
+          <Radio id="veggie1" value="cabbage">
+            Cabbage
+          </Radio>
+          <Radio id="veggie2" value="mushroom">
+            Mushroom
+          </Radio>
+          <Radio id="veggie3" value="eggplant">
+            Eggplant
+          </Radio>
+          <Radio id="veggie4" value="broccoli" isDisabled>
+            Brocolli
+          </Radio>
+        </RadioGroup>
+
+        <hr />
         <h1>Modal Lightbox Dialog</h1>
         <Button secondary onClick={this.handleOpenModal}>
           Trigger Modal with header
@@ -102,9 +160,6 @@ class App extends React.Component {
         <hr />
 
         <h1>Combo button</h1>
-
-        {/* <ButtonCombo primary label="Starches" options={this.comboOptions} /> */}
-        {/* <ButtonCombo secondary label="Candy Bars" options={this.comboOptions2} /> */}
 
         <hr />
         <h1>Buttons</h1>
