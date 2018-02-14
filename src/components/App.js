@@ -80,7 +80,7 @@ class App extends React.Component {
         <Checkbox
           id={"disabledPreCheck"}
           label={"Roast beef (Disabled but pre-checked)"}
-          checked={true}
+          isSelected={true}
           isDisabled={true}
         />
 
