@@ -13,7 +13,11 @@ import {
   Checkbox,
   Radio,
   RadioGroup,
-  RadioGroupHeader
+  RadioGroupHeader,
+  NavBar,
+  NavItem,
+  Link,
+  UnstyledLink
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -31,6 +35,7 @@ class App extends React.Component {
     this.comboOptions2 = ["Skittle", "Snickers", "Twix"];
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleNavChange = this.handleNavChange.bind(this);
 
     this.ramenOptions = ["Onsen Egg", "Bamboo Shoots", "Pork Belly", "Enoki"];
   }
@@ -57,11 +62,52 @@ class App extends React.Component {
     console.log("[sandbox] handleOptionChange: ", props);
   };
 
+  handleNavChange = (e, props) => {
+    console.log("[sandbox] handleNavChange: ", props);
+  };
+
   render() {
     return (
       <div>
+        <h1>Links</h1>
+        <p>
+          We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
+          also an{" "}
+          <UnstyledLink url="http://www.google.com" external>
+            External Link
+          </UnstyledLink>{" "}
+          (that will open up in a new tab).
+        </p>
+
+        <hr />
+
+        <h1>Tab Navigation</h1>
+        <h3>With URLs</h3>
+        <NavBar>
+          <NavItem id="tab-one" url="/one">
+            One Taco
+          </NavItem>
+          <NavItem id="tab-two" url="/two">
+            Two Tacos
+          </NavItem>
+          <NavItem id="tab-three" url="/three" isDisabled>
+            Three Tacos (disabled)
+          </NavItem>
+          <NavItem id="tab-external" url="http://www.google.com" external>
+            External Tacos
+          </NavItem>
+        </NavBar>
+
+        <h1>Tab Navigation with URLs</h1>
+        <h3>With onclick on parent</h3>
+        <NavBar onClick={this.handleNavChange}>
+          <NavItem id="tab-one">One Corn</NavItem>
+          <NavItem id="tab-two">Two Corns</NavItem>
+          <NavItem id="tab-three">Three Corns</NavItem>
+        </NavBar>
+
+        <hr />
         <h1>Checkbox</h1>
-        {/* Only the first contains state management */}
         <Checkbox
           id={"hotdogCheck"}
           label={"Hot dog"}
