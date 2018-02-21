@@ -15,9 +15,13 @@ import {
   RadioGroup,
   RadioGroupHeader,
   NavBar,
+  NavBarItem,
   NavItem,
+  NavGroup,
   Link,
-  UnstyledLink
+  UnstyledLink,
+  Sidebar,
+  SidebarItem
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -69,6 +73,27 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Sidebar</h1>
+        <Sidebar onClick={this.handleNavChange}>
+          <SidebarItem id="about">About</SidebarItem>
+          <SidebarItem id="adopt" isDisabled>
+            Adopt (not available)
+          </SidebarItem>
+          <NavGroup title="Cats" id="cats">
+            <SidebarItem id="cat-blue">Blue Russian</SidebarItem>
+            <SidebarItem id="cat-calico">Calico</SidebarItem>
+            <SidebarItem id="cat-exotic">Exotic Short Hair</SidebarItem>
+          </NavGroup>
+          <NavGroup title="Dogs" id="dogs">
+            <SidebarItem id="dog-aussie">Australian Shepard</SidebarItem>
+            <SidebarItem id="dog-boston">Boston Terrier</SidebarItem>
+            <SidebarItem id="dog-corgi">Corgi</SidebarItem>
+            <SidebarItem id="dog-shibe">Shiba Inu</SidebarItem>
+          </NavGroup>
+          <SidebarItem id="contact">Contact Us</SidebarItem>
+        </Sidebar>
+
+        <hr />
         <h1>Links</h1>
         <p>
           We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
@@ -84,29 +109,30 @@ class App extends React.Component {
         <h1>Tab Navigation</h1>
         <h3>With URLs</h3>
         <NavBar>
-          <NavItem id="tab-one" url="/one">
+          <NavBarItem id="tab-one" url="/one">
             One Taco
-          </NavItem>
-          <NavItem id="tab-two" url="/two">
+          </NavBarItem>
+          <NavBarItem id="tab-two" url="/two">
             Two Tacos
-          </NavItem>
-          <NavItem id="tab-three" url="/three" isDisabled>
+          </NavBarItem>
+          <NavBarItem id="tab-three" url="/three" isDisabled>
             Three Tacos (disabled)
-          </NavItem>
-          <NavItem id="tab-external" url="http://www.google.com" external>
+          </NavBarItem>
+          <NavBarItem id="tab-external" url="http://www.google.com" external>
             External Tacos
-          </NavItem>
+          </NavBarItem>
         </NavBar>
 
         <h1>Tab Navigation with URLs</h1>
         <h3>With onclick on parent</h3>
         <NavBar onClick={this.handleNavChange}>
-          <NavItem id="tab-one">One Corn</NavItem>
-          <NavItem id="tab-two">Two Corns</NavItem>
-          <NavItem id="tab-three">Three Corns</NavItem>
+          <NavBarItem id="tab-one">One Corn</NavBarItem>
+          <NavBarItem id="tab-two">Two Corns</NavBarItem>
+          <NavBarItem id="tab-three">Three Corns</NavBarItem>
         </NavBar>
 
         <hr />
+
         <h1>Checkbox</h1>
         <Checkbox
           id={"hotdogCheck"}
@@ -296,13 +322,5 @@ class App extends React.Component {
     );
   }
 }
-
-// const App = ({ name }) => {
-
-// };
-
-// App.propTypes = {
-//   name: PropTypes.string
-// };
 
 export default App;
