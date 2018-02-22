@@ -21,7 +21,8 @@ import {
   Link,
   UnstyledLink,
   Sidebar,
-  SidebarItem
+  SidebarItem,
+  PasswordField
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -73,6 +74,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Password</h1>
+        <PasswordField id="my-pass-field" />
+
         <h1>Sidebar</h1>
         <Sidebar onClick={this.handleNavChange}>
           <SidebarItem id="about">About</SidebarItem>
@@ -94,6 +98,7 @@ class App extends React.Component {
         </Sidebar>
 
         <hr />
+
         <h1>Links</h1>
         <p>
           We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
@@ -174,6 +179,7 @@ class App extends React.Component {
         </RadioGroup>
 
         <hr />
+
         <h1>Modal Lightbox Dialog</h1>
         <Button secondary onClick={this.handleOpenModal}>
           Trigger Modal with header
@@ -221,6 +227,7 @@ class App extends React.Component {
           items={["apple", "orange", "carrot"]}
           onChange={selectedItem => console.log(selectedItem)}
         />
+
         <hr />
 
         <h1>Date Picker</h1>
@@ -228,10 +235,6 @@ class App extends React.Component {
           label={"Select a Date"}
           options={{ dateFormat: "m-d-Y " }}
         />
-
-        <hr />
-
-        <h1>Combo button</h1>
 
         <hr />
         <h1>Buttons</h1>
