@@ -22,7 +22,9 @@ import {
   Sidebar,
   SidebarItem,
   PasswordField,
-  Textarea
+  Textarea,
+  BreadcrumbGroup,
+  Breadcrumb
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -76,6 +78,16 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <h1>Breadcrumbs</h1>
+            <BreadcrumbGroup>
+              <Breadcrumb url="/bread1">Bread crumb 1</Breadcrumb>
+              <Breadcrumb url="/bread2">Bread crumb 2</Breadcrumb>
+              <Breadcrumb url="/bread3">Bread crumb 3</Breadcrumb>
+              <Breadcrumb url="/bread4">Bread crumb 4</Breadcrumb>
+            </BreadcrumbGroup>
+
+            <hr />
+
             <h1>Order Form</h1>
             <WrappedInputLabel small label={"Name"} />
             <WrappedInputLabel label={"Email"} type={"email"} />
