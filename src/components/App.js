@@ -29,7 +29,8 @@ import {
   // Caption,
   Header,
   DisplayText,
-  Card
+  Card,
+  MenuButton
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -50,6 +51,7 @@ class App extends React.Component {
     this.handleNavChange = this.handleNavChange.bind(this);
 
     this.ramenOptions = ["Onsen Egg", "Bamboo Shoots", "Pork Belly", "Enoki"];
+    this.menuOptions = ["Account", "Settings", "Logout"];
   }
 
   doClick(e) {
@@ -83,6 +85,10 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <h1>Button Combo</h1>
+
+            <MenuButton secondary label="Menu" options={this.menuOptions} />
+            <hr />
             <h1>Card</h1>
 
             <div className="row">
