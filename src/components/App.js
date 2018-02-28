@@ -88,7 +88,9 @@ class App extends React.Component {
             <div className="row">
               <div className="col-6">
                 <Card>
-                  <Header element="h3">Adopt Today</Header>
+                  <Header divider="muted" element="h3">
+                    Adopt Today
+                  </Header>
                   <DisplayText>
                     We have many kittens available for adoption. Please call
                     1-800-Kittens for more information.
@@ -102,7 +104,9 @@ class App extends React.Component {
                   renderArrow
                   onClick={() => console.log("Clicked card")}
                 >
-                  <Header element="h3">Puppies are back!</Header>
+                  <Header centered divider="primary" element="h3">
+                    Puppies are back!
+                  </Header>
                   <DisplayText>
                     We got a new shipment of puppies! Come see!
                   </DisplayText>
@@ -150,14 +154,59 @@ class App extends React.Component {
                 </DisplayText>
               </div>
             </div>
-            <Header>Header - default</Header>
-            <Header element="h1">Header 1 - Large</Header>
-            <Header element="h2">Header 2 - Medium</Header>
-            <Header element="h2" weight="400">
-              Header 2 - Medium - Regular
-            </Header>
-            <Header element="h3">Header 3 - small</Header>
-            <Header element="h4">Header 4 - extra small</Header>
+
+            <div className="row">
+              <div className="col-lg-4">
+                <Header>Header - default</Header>
+                <Header element="h1">Header 1 - Large</Header>
+                <Header element="h2">Header 2 - Medium</Header>
+                <Header element="h2" weight="400">
+                  Header 2 - Medium - Regular
+                </Header>
+                <Header element="h3">Header 3 - small</Header>
+                <Header element="h4">Header 4 - extra small</Header>
+              </div>
+              <div className="col-lg-4">
+                <Header centered divider="primary">
+                  Header - default
+                </Header>
+                <Header centered divider="primary" element="h1">
+                  Header 1 - Large
+                </Header>
+                <Header centered divider="primary" element="h2">
+                  Header 2 - Medium
+                </Header>
+                <Header centered divider="primary" element="h2" weight="400">
+                  Header 2 - Medium - Regular
+                </Header>
+                <Header centered divider="primary" element="h3">
+                  Header 3 - small
+                </Header>
+                <Header centered divider="primary" element="h4">
+                  Header 4 - extra small
+                </Header>
+              </div>
+              <div className="col-lg-4">
+                <Header centered divider="muted">
+                  Header - default
+                </Header>
+                <Header centered divider="muted" element="h1">
+                  Header 1 - Large
+                </Header>
+                <Header centered divider="muted" element="h2">
+                  Header 2 - Medium
+                </Header>
+                <Header centered divider="muted" element="h2" weight="400">
+                  Header 2 - Medium - Regular
+                </Header>
+                <Header centered divider="muted" element="h3">
+                  Header 3 - small
+                </Header>
+                <Header centered divider="muted" element="h4">
+                  Header 4 - extra small
+                </Header>
+              </div>
+            </div>
             <hr />
             {/* <Table>
               <caption>Items Sold August 2016</caption>
