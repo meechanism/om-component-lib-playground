@@ -30,7 +30,8 @@ import {
   Header,
   DisplayText,
   Card,
-  MenuButton
+  MenuButton,
+  MenuItem
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -85,9 +86,178 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <h1>Button Combo</h1>
+            <h1>Buttons</h1>
 
-            <MenuButton secondary label="Menu" options={this.menuOptions} />
+            <div className="row">
+              <div className="col-4">
+                <h3>Inline button menu</h3>
+
+                <MenuButton id="my-menu3" type="inline" label="Menu">
+                  <MenuItem
+                    menuButtonType="inline"
+                    onClick={() => console.log("Button menu: Clicked account")}
+                  >
+                    Account Information
+                  </MenuItem>
+                  <MenuItem
+                    menuButtonType="inline"
+                    onClick={() => console.log("Button menu: Clicked settings")}
+                  >
+                    Settings
+                  </MenuItem>
+                  <MenuItem
+                    menuButtonType="inline"
+                    onClick={() => console.log("Button menu: Clicked logout")}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuButton>
+                <p>
+                  Note: The max width of the menu is going to be the width of
+                  the sibling, which in this case is the button label. If you
+                  want to control the min-width of the menu, pass in a
+                  `menuMinWidth` prop. See below for example
+                </p>
+
+                <div style={{ border: "1px dashed pink" }}>
+                  <h3>Render from right</h3>
+                  <p>
+                    This will render out starting from the farthest right of the
+                    button's width. For exageration, we put a dashed border
+                    around the parent container to clarify that it doesn't
+                    render based on parent container.
+                  </p>
+                  <MenuButton
+                    id="my-menu4"
+                    type="inline"
+                    label="Menu"
+                    renderFrom="right"
+                    menuMinWidth="200px"
+                  >
+                    <MenuItem
+                      menuButtonType="inline"
+                      onClick={() =>
+                        console.log("Button menu: Clicked account")
+                      }
+                    >
+                      Account Information
+                    </MenuItem>
+                    <MenuItem
+                      menuButtonType="inline"
+                      onClick={() =>
+                        console.log("Button menu: Clicked settings")
+                      }
+                    >
+                      Settings
+                    </MenuItem>
+                    <MenuItem
+                      menuButtonType="inline"
+                      onClick={() => console.log("Button menu: Clicked logout")}
+                    >
+                      Logout
+                    </MenuItem>
+                  </MenuButton>
+                </div>
+              </div>
+              <div className="col-4">
+                <h3>Primary button menu</h3>
+                <MenuButton id="my-menu" label="Menu">
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked account")}
+                  >
+                    Account
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked settings")}
+                  >
+                    Settings
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked logout")}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuButton>
+              </div>
+              <div className="col-4">
+                <h3>Secondary button menu</h3>
+                <MenuButton id="my-menu2" type="secondary" label="Menu">
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked account")}
+                  >
+                    Account
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked settings")}
+                  >
+                    Settings
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => console.log("Button menu: Clicked logout")}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuButton>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-lg-3">
+                <h3>Default Button</h3>
+                <p>
+                  The props to this button are pretty much non-existant, sans
+                  the onClick callback for an example. It is using a lot of the
+                  default settings.
+                </p>
+                <Button onClick={this.doClick}>Default Button (clickme)</Button>
+
+                <h3>Others</h3>
+                <Button type="danger">Ddddanger Zone</Button>
+              </div>
+              <div className="col-lg-3">
+                <h3>Button Small</h3>
+
+                <Button size="small">Primary Small</Button>
+                <Button type="secondary" size="small">
+                  Secondary Small
+                </Button>
+
+                <Button type="disabled" size="small">
+                  Disabled Small
+                </Button>
+              </div>
+              <div className="col-lg-3">
+                <h3>Button Large</h3>
+                <Button size="large">Primary Large</Button>
+                <Button type="secondary" size="large">
+                  Secondary Large
+                </Button>
+                <Button type="disabled" size="large">
+                  Disabled Large
+                </Button>
+              </div>
+              <div className="col-lg-3">
+                <h3>Inline</h3>
+                <p>
+                  A small{" "}
+                  <Button size="small" type="inline">
+                    small inline
+                  </Button>{" "}
+                  button
+                </p>
+                <p>
+                  Another kind of <Button type="inline">inline</Button> button
+                </p>
+                <p>
+                  But then a{" "}
+                  <Button size="large" type="inline">
+                    large inline
+                  </Button>{" "}
+                  too
+                </p>
+              </div>
+            </div>
+
             <hr />
             <h1>Card</h1>
 
@@ -119,7 +289,9 @@ class App extends React.Component {
                 </Card>
               </div>
             </div>
+
             <hr />
+
             <h1>Typography: Display Text + Headers</h1>
             <div className="row">
               <div className="col-6">
@@ -213,6 +385,7 @@ class App extends React.Component {
                 </Header>
               </div>
             </div>
+
             <hr />
             {/* <Table>
               <caption>Items Sold August 2016</caption>
@@ -296,82 +469,93 @@ class App extends React.Component {
               <Breadcrumb url="/bread4">Bread crumb 4</Breadcrumb>
             </BreadcrumbGroup>
             <hr />
+
             <h1>Order Form</h1>
-            <WrappedInputLabel small label={"Name"} />
-            <WrappedInputLabel label={"Email"} type={"email"} />
-            <PasswordField id="my-pass-field" />
-            <WrappedInputLabel
-              large
-              disabled
-              label={"Disabled Input"}
-              type={"text"}
-              value={"Lollipop"}
-            />
-            <DatePicker
-              id="select-date-id"
-              label={"Select a Pick-up Date"}
-              options={{ dateFormat: "m-d-Y " }}
-            />
-            <BasicAutocomplete
-              label={"Fruit Selection"}
-              items={["apple", "orange", "carrot"]}
-              onChange={selectedItem =>
-                console.log("Picked fruit: ", selectedItem)
-              }
-            />
-            <h3>Protein Selection</h3>
-            <Checkbox
-              id={"hotdogCheck"}
-              label={"Hot dog"}
-              onChange={this.handleCheckboxChange.bind(this)}
-            />
-            <Checkbox
-              id={"baconCheck"}
-              label={"Bacon (recommended!)"}
-              isSelected={true}
-            />
-            <Checkbox
-              id={"disabledCheck"}
-              label={"Turkey breast (Unavailable)"}
-              isDisabled={true}
-            />
-            <Checkbox
-              id={"disabledPreCheck"}
-              label={"Roast beef (required for every order)"}
-              isSelected={true}
-              isDisabled={true}
-            />
-            <RadioGroup name={"veggie-option"}>
-              <RadioGroupHeader>Veggies</RadioGroupHeader>
-              <Radio id="veggie1" value="cabbage">
-                Cabbage
-              </Radio>
-              <Radio id="veggie2" value="mushroom">
-                Mushroom
-              </Radio>
-              <Radio id="veggie3" value="eggplant">
-                Eggplant
-              </Radio>
-              <Radio id="veggie4" value="broccoli" isDisabled>
-                Brocolli
-              </Radio>
-            </RadioGroup>
-            <Textarea
-              id="my-textarea"
-              value="Tell us what you like most!"
-              label="My Story"
-            />
             <div className="row">
-              <div className="col-4">
-                <Button primary>Order</Button>
+              <div className="col-md-6">
+                <WrappedInputLabel small label={"Name"} />
+                <WrappedInputLabel label={"Email"} type={"email"} />
+                <PasswordField id="my-pass-field" />
+                <WrappedInputLabel
+                  large
+                  disabled
+                  label={"Disabled Input"}
+                  type={"text"}
+                  value={"Lollipop"}
+                />
+                <DatePicker
+                  id="select-date-id"
+                  label={"Select a Pick-up Date"}
+                  options={{ dateFormat: "m-d-Y " }}
+                />
+                <BasicAutocomplete
+                  label={"Fruit Selection"}
+                  items={["apple", "orange", "carrot"]}
+                  onChange={selectedItem =>
+                    console.log("Picked fruit: ", selectedItem)
+                  }
+                />
               </div>
-              <div className="col-4">
-                <Button secondary>Save</Button>
-              </div>
-              <div className="col-4">
-                <Button disabled>Rush</Button>
+              <div className="col-md-6">
+                <h3>Protein Selection</h3>
+                <Checkbox
+                  id={"hotdogCheck"}
+                  label={"Hot dog"}
+                  onChange={this.handleCheckboxChange.bind(this)}
+                />
+                <Checkbox
+                  id={"baconCheck"}
+                  label={"Bacon (recommended!)"}
+                  isSelected={true}
+                />
+                <Checkbox
+                  id={"disabledCheck"}
+                  label={"Turkey breast (Unavailable)"}
+                  isDisabled={true}
+                />
+                <Checkbox
+                  id={"disabledPreCheck"}
+                  label={"Roast beef (required for every order)"}
+                  isSelected={true}
+                  isDisabled={true}
+                />
+                <RadioGroup name={"veggie-option"}>
+                  <RadioGroupHeader>Veggies</RadioGroupHeader>
+                  <Radio id="veggie1" value="cabbage">
+                    Cabbage
+                  </Radio>
+                  <Radio id="veggie2" value="mushroom">
+                    Mushroom
+                  </Radio>
+                  <Radio id="veggie3" value="eggplant">
+                    Eggplant
+                  </Radio>
+                  <Radio id="veggie4" value="broccoli" isDisabled>
+                    Brocolli
+                  </Radio>
+                </RadioGroup>
+                <Textarea
+                  id="my-textarea"
+                  value="Tell us what you like most!"
+                  label="My Story"
+                />
+
+                <div className="row">
+                  <div className="col-4">
+                    <Button>Order</Button>
+                  </div>
+                  <div className="col-4">
+                    <Button type="secondary">Save</Button>
+                  </div>
+                  <div className="col-4">
+                    <Button type="disabled">Rush</Button>
+                  </div>
+                </div>
               </div>
             </div>
+
+            <hr />
+
             <h1>Sidebar: Animal Adoption</h1>
             <Sidebar onClick={this.handleNavChange}>
               <SidebarItem id="about">About</SidebarItem>
@@ -470,45 +654,7 @@ class App extends React.Component {
                 </Button>
               </ModalBody>
             </Modal>
-            <hr />
-            <h1>Buttons</h1>
-            <Button onClick={this.doClick}>
-              Normal Button <span className="test">(clickme)</span>
-            </Button>
-            <h1>Button Small</h1>
-            <Button primary size="small">
-              Primary Small
-            </Button>
-            <Button secondary size="small">
-              Secondary Small
-            </Button>
-            <h1>Button large</h1>
-            <Button primary size="large">
-              Primary Large
-            </Button>
-            <Button secondary size="large">
-              Secondary Large
-            </Button>
-            <h1>Inline</h1>
-            <p>
-              A small{" "}
-              <Button size="small" inline>
-                small inline
-              </Button>{" "}
-              button
-            </p>
-            <p>
-              Another kind of <Button inline>inline</Button> button
-            </p>
-            <p>
-              But then a{" "}
-              <Button size="large" inline>
-                large inline
-              </Button>{" "}
-              too
-            </p>
-            <h1>Others</h1>
-            <Button danger>Ddddanger Zone</Button>
+
             <hr />
             <h1>Alerts</h1>
             <Alert
