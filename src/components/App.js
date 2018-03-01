@@ -31,7 +31,8 @@ import {
   DisplayText,
   Card,
   MenuButton,
-  MenuItem
+  MenuItem,
+  IconLabelNav
 } from "@westfield/om-react-components";
 
 import ReactModal from "react-modal";
@@ -86,6 +87,19 @@ class App extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <IconLabelNav
+              label="Administration"
+              onIconClick={() => console.log("clicked icon")}
+              iconAriaLabel="View applications"
+            >
+              <NavBar onClick={this.handleNavChange}>
+                <NavBarItem id="product">Product Management</NavBarItem>
+                <NavBarItem id="partner">Partner Management</NavBarItem>
+                <NavBarItem id="group">Group Management</NavBarItem>
+                <NavBarItem id="user">User Management</NavBarItem>
+              </NavBar>
+            </IconLabelNav>
+
             <h1>Buttons</h1>
 
             <div className="row">
