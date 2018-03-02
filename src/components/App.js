@@ -25,8 +25,13 @@ import {
   Textarea,
   BreadcrumbGroup,
   Breadcrumb,
-  // Table,
-  // Caption,
+  Table,
+  Caption,
+  Tbody,
+  Thead,
+  Th,
+  Td,
+  Tr,
   Header,
   DisplayText,
   Card,
@@ -182,9 +187,10 @@ class App extends React.Component {
                     Account
                   </MenuItem>
                   <MenuItem
+                    disabled
                     onClick={() => console.log("Button menu: Clicked settings")}
                   >
-                    Settings
+                    Settings (disabled)
                   </MenuItem>
                   <MenuItem
                     onClick={() => console.log("Button menu: Clicked logout")}
@@ -322,7 +328,7 @@ class App extends React.Component {
                   Austin celiac paleo ramps street art.
                 </DisplayText>
 
-                <DisplayText muted>
+                <DisplayText color="muted">
                   Ethical live-edge tacos XOXO portland twee. Quinoa hell of
                   freegan, art party farm-to-table cred pabst irony photo booth
                   banh mi trust fund copper mug. Austin celiac paleo ramps
@@ -340,7 +346,7 @@ class App extends React.Component {
                   tumblr selvage.
                 </DisplayText>
 
-                <DisplayText element="span" muted>
+                <DisplayText element="span" color="muted">
                   Palo santo copper mug messenger bag next level authentic food
                   truck iPhone gluten-free poke butcher.
                 </DisplayText>
@@ -401,78 +407,99 @@ class App extends React.Component {
             </div>
 
             <hr />
-            {/* <Table>
-              <caption>Items Sold August 2016</caption>
-              <thead>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <th colSpan="3" scope="colgroup">
-                    Clothes
-                  </th>
-                  <th colSpan="2" scope="colgroup">
-                    Accessories
-                  </th>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <th scope="col">Trousers</th>
-                  <th scope="col">Skirts</th>
-                  <th scope="col">Dresses</th>
-                  <th scope="col">Bracelets</th>
-                  <th scope="col">Rings</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th rowSpan="3" scope="rowgroup">
-                    Belgium
-                  </th>
-                  <th scope="row">Antwerp</th>
-                  <td>56</td>
-                  <td>22</td>
-                  <td>43</td>
-                  <td>72</td>
-                  <td>23</td>
-                </tr>
-                <tr>
-                  <th scope="row">Gent</th>
-                  <td>46</td>
-                  <td>18</td>
-                  <td>50</td>
-                  <td>61</td>
-                  <td>15</td>
-                </tr>
-                <tr>
-                  <th scope="row">Brussels</th>
-                  <td>51</td>
-                  <td>27</td>
-                  <td>38</td>
-                  <td>69</td>
-                  <td>28</td>
-                </tr>
-                <tr>
-                  <th rowSpan="2" scope="rowgroup">
-                    The Netherlands
-                  </th>
-                  <th scope="row">Amsterdam</th>
-                  <td>89</td>
-                  <td>34</td>
-                  <td>69</td>
-                  <td>85</td>
-                  <td>38</td>
-                </tr>
-                <tr>
-                  <th scope="row">Utrecht</th>
-                  <td>80</td>
-                  <td>12</td>
-                  <td>43</td>
-                  <td>36</td>
-                  <td>19</td>
-                </tr>
-              </tbody>
-            </Table> */}
+
+            <Table>
+              <Caption>Pat Thompson / Customer #19583</Caption>
+              <Thead>
+                <Tr>
+                  <Th>Transaction Id</Th>
+                  <Th>Date</Th>
+                  <Th>Store</Th>
+                  <Th>Item Count</Th>
+                  <Th align="right">Transaction Total</Th>
+                  <Th>Actions</Th>
+                  <Th>Status</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td dataLabel="Transaction Id">345829</Td>
+                  <Td dataLabel="Date">02/12/2018</Td>
+                  <Td dataLabel="Store">
+                    The longest food name emporium for all of the puppies and
+                    kittens that need foodstuffs
+                  </Td>
+                  <Td dataLabel="Item Count">3</Td>
+                  <Td dataLabel="Transaction Total" align="right">
+                    $157.89
+                  </Td>
+                  <Td dataLabel="Actions">
+                    <Link>Download</Link> | <Link>Return</Link>
+                  </Td>
+                  <Td dataLabel="Status">
+                    <DisplayText element="span" color="danger">
+                      Disabled
+                    </DisplayText>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td dataLabel="Transaction Id">245333</Td>
+                  <Td dataLabel="Date">02/10/2018</Td>
+                  <Td dataLabel="Store">Express</Td>
+                  <Td dataLabel="Item Count">5</Td>
+                  <Td dataLabel="Transaction Total" align="right">
+                    $80.77
+                  </Td>
+                  <Td dataLabel="Actions">
+                    <MenuButton
+                      id="express-menu"
+                      type="inline"
+                      label="Actions"
+                      extraWrap
+                    >
+                      <MenuItem
+                        menuButtonType="inline"
+                        onClick={() =>
+                          console.log("Button menu: Clicked Download")
+                        }
+                      >
+                        Download
+                      </MenuItem>
+                      <MenuItem
+                        menuButtonType="inline"
+                        onClick={() =>
+                          console.log("Button menu: Clicked Return")
+                        }
+                      >
+                        Return
+                      </MenuItem>
+                      <MenuItem
+                        menuButtonType="inline"
+                        onClick={() =>
+                          console.log("Button menu: Clicked Delete")
+                        }
+                      >
+                        Delete
+                      </MenuItem>
+                    </MenuButton>
+                  </Td>
+                  <Td dataLabel="Status">Active</Td>
+                </Tr>
+                <Tr>
+                  <Td dataLabel="Transaction Id">125832</Td>
+                  <Td dataLabel="Date">01/9/2018</Td>
+                  <Td dataLabel="Store">Nordstrom</Td>
+                  <Td dataLabel="Item Count">12</Td>
+                  <Td dataLabel="Transaction Total" align="right">
+                    $1,901.21
+                  </Td>
+                  <Td dataLabel="Actions">
+                    <Link>Download</Link> | <Link>Return</Link>
+                  </Td>
+                  <Td dataLabel="Status">Active</Td>
+                </Tr>
+              </Tbody>
+            </Table>
 
             <hr />
             <h1>Breadcrumbs</h1>
