@@ -538,30 +538,62 @@ class App extends React.Component {
                 />
               </div>
               <div className="col-md-6">
-                <h3>Protein Selection</h3>
-                <Checkbox
-                  id={"hotdogCheck"}
-                  label={"Hot dog"}
-                  onChange={this.handleCheckboxChange.bind(this)}
-                />
-                <Checkbox
-                  id={"baconCheck"}
-                  label={"Bacon (recommended!)"}
-                  isSelected={true}
-                />
-                <Checkbox
-                  id={"disabledCheck"}
-                  label={"Turkey breast (Unavailable)"}
-                  isDisabled={true}
-                />
-                <Checkbox
-                  id={"disabledPreCheck"}
-                  label={"Roast beef (required for every order)"}
-                  isSelected={true}
-                  isDisabled={true}
-                />
-                <RadioGroup name={"veggie-option"}>
-                  <RadioGroupHeader>Veggies</RadioGroupHeader>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <h3>Protein Selection</h3>
+                    <Checkbox
+                      id={"hotdogCheck"}
+                      label={"Hot dog"}
+                      onChange={this.handleCheckboxChange.bind(this)}
+                    />
+                    <Checkbox
+                      id={"baconCheck"}
+                      label={"Bacon (recommended!)"}
+                      isSelected={true}
+                    />
+                    <Checkbox
+                      id={"disabledCheck"}
+                      label={"Turkey breast (Unavailable)"}
+                      isDisabled={true}
+                    />
+                    <Checkbox
+                      id={"disabledPreCheck"}
+                      label={"Roast beef (required for every order)"}
+                      isSelected={true}
+                      isDisabled={true}
+                    />
+                  </div>
+                  <div className="col-sm-6">
+                    <h3>Cheese Selection</h3>
+                    <Checkbox
+                      id={"havarti"}
+                      label={"Havarti"}
+                      onChange={this.handleCheckboxChange.bind(this)}
+                      style={{ bottomBorder: true }}
+                    />
+                    <Checkbox
+                      id={"cheddar"}
+                      label={"Cheddar"}
+                      isSelected={true}
+                      style={{ bottomBorder: true }}
+                    />
+                    <Checkbox
+                      id={"goatmilk"}
+                      label={"Goat Milk (Unavailable)"}
+                      isDisabled={true}
+                      style={{ bottomBorder: true }}
+                    />
+                    <Checkbox
+                      id={"pepperjack"}
+                      label={"Pepperjack (required for every order)"}
+                      isSelected={true}
+                      isDisabled={true}
+                      style={{ bottomBorder: true }}
+                    />
+                  </div>
+                </div>
+
+                <RadioGroup label="Veggies" name={"veggie-option"}>
                   <Radio id="veggie1" value="cabbage">
                     Cabbage
                   </Radio>
@@ -616,7 +648,9 @@ class App extends React.Component {
               </NavGroup>
               <SidebarItem id="contact">Contact Us</SidebarItem>
             </Sidebar>
+
             <hr />
+
             <h1>Links</h1>
             <p>
               We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
