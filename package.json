@@ -21,6 +21,7 @@
   "dependencies": {
     "@westfield/om-react-components": "~0.1.4",
     "@westfield/one-base": "~0.1.3",
+    "@westfield/one-grid": "^0.1.19",
     "@westfield/one-styles": "~0.1.3",
     "@westfield/one-utilities": "~0.1.3",
     "express": "^4.15.2",
