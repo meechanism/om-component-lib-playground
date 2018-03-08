@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import "./styles/App.css";
 import {
   Button,
   Alert,
@@ -8,14 +9,11 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  Close,
   Checkbox,
   Radio,
   RadioGroup,
-  RadioGroupHeader,
   NavBar,
   NavBarItem,
-  NavItem,
   NavGroup,
   Link,
   UnstyledLink,
@@ -40,9 +38,7 @@ import {
   IconLabelNav
 } from "@westfield/om-react-components";
 
-import ReactModal from "react-modal";
-
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -514,7 +510,11 @@ class App extends React.Component {
             <h1>Order Form</h1>
             <div className="row">
               <div className="col-md-6">
-                <WrappedInputLabel small label={"Name"} />
+                <WrappedInputLabel
+                  small
+                  label="Name"
+                  onChange={e => console.log("Changed:", e)}
+                />
                 <WrappedInputLabel label={"Email"} type={"email"} />
                 <PasswordField id="my-pass-field" />
                 <WrappedInputLabel
@@ -690,13 +690,12 @@ class App extends React.Component {
             </NavBar>
             <hr />
             <h1>Modal Lightbox Dialog</h1>
-            <Button secondary onClick={this.handleOpenModal}>
+            <Button type="secondary" onClick={this.handleOpenModal}>
               Trigger Modal with header
             </Button>
             <Modal
               ariaHideApp={false}
               isOpen={this.state.showModal}
-              contentLabel="Minimal Modal Example"
               onRequestClose={this.handleCloseModal}
               contentLabel="Example Modal"
             >
