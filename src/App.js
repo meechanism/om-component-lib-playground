@@ -593,20 +593,45 @@ class App extends Component {
                   </div>
                 </div>
 
-                <RadioGroup label="Veggies" name={"veggie-option"}>
-                  <Radio id="veggie1" value="cabbage">
-                    Cabbage
-                  </Radio>
-                  <Radio id="veggie2" value="mushroom">
-                    Mushroom
-                  </Radio>
-                  <Radio id="veggie3" value="eggplant">
-                    Eggplant
-                  </Radio>
-                  <Radio id="veggie4" value="broccoli" isDisabled>
-                    Brocolli
-                  </Radio>
-                </RadioGroup>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <RadioGroup label="Veggies" name={"veggie-option"}>
+                      <Radio id="veggie1" value="cabbage">
+                        Cabbage
+                      </Radio>
+                      <Radio id="veggie2" value="mushroom">
+                        Mushroom
+                      </Radio>
+                      <Radio id="veggie3" value="eggplant">
+                        Eggplant
+                      </Radio>
+                      <Radio id="veggie4" value="broccoli" isDisabled>
+                        Brocolli
+                      </Radio>
+                    </RadioGroup>
+                  </div>
+                  <div className="col-sm-6">
+                    <RadioGroup
+                      label="Bread"
+                      name={"bread-option"}
+                      style={{ bottomBorder: true }}
+                    >
+                      <Radio id="bread-wheat" value="wheat">
+                        Wheat
+                      </Radio>
+                      <Radio id="bread-sour" value="sourdough">
+                        Sourdough
+                      </Radio>
+                      <Radio id="bread-rye" value="rye">
+                        Rye
+                      </Radio>
+                      <Radio id="bread-ciabatta" value="ciabatta" isDisabled>
+                        Ciabatta
+                      </Radio>
+                    </RadioGroup>
+                  </div>
+                </div>
+
                 <Textarea
                   id="my-textarea"
                   value="Tell us what you like most!"
