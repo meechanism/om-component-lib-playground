@@ -1,3 +1,4 @@
+import uuid from "uuid";
 import React, { Component } from "react";
 import "./styles/App.css";
 import {
@@ -35,17 +36,49 @@ import {
   Card,
   MenuButton,
   MenuItem,
-  IconLabelNav
+  IconLabelNav,
+  PaginationBar,
+  Chevron,
+  Close,
+  Calendar,
+  Ellipsis
 } from "@westfield/om-react-components";
+
+import getRandomInt from "./utilities/random-int";
+import generateName from "./utilities/name-generator";
+
+function getPageItems(start, stop, step = 1) {
+  return Array(stop - start)
+    .fill(start)
+    .map((x, y) => {
+      const i = x + y * step;
+      return {
+        id: i,
+        name: generateName("egyptian"),
+        price: `$ ${getRandomInt(1500)}`,
+        type: getRandomInt(2) > 0 ? "Dog" : "Cat",
+        reference: uuid.v4()
+      };
+    });
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showModalWithHeader: false,
       showModalWithNoHeader: false,
-      selected: 0
+      selected: 0,
+
+      // Pagination 2
+      data: [],
+      offset: 0
     };
+
+    // This could be grabbed from the server, for instance, but we are hardcoding.
+    this.exampleItems = getPageItems(1, 56);
+    this.itemsPerPage = 5;
 
     this.comboOptions = ["Potato", "Corn", "Radish"];
     this.comboOptions2 = ["Skittle", "Snickers", "Twix"];
@@ -83,11 +116,86 @@ class App extends Component {
     console.log("[sandbox] handleNavChange: ", props);
   };
 
+  // pagination2
+  handlePageClick = data => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * this.itemsPerPage);
+
+    this.setState({ offset: offset }, () => {
+      this.loadPaginationData();
+    });
+  };
+
+  loadPaginationData() {
+    // Can replace this with an api call to grab data with an offset + size
+    const data = this.exampleItems.slice(
+      this.state.offset,
+      this.state.offset + this.itemsPerPage
+    );
+    this.setState({
+      data: data,
+      pageCount: Math.ceil(this.exampleItems.length / this.itemsPerPage)
+    });
+  }
+
+  componentDidMount() {
+    this.loadPaginationData();
+  }
+
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <h1>Icons</h1>
+            <Chevron direction={1} />
+            <Close />
+            <Ellipsis />
+            <Calendar />
+
+            <hr />
+
+            <h1>Table + Pagination </h1>
+            <Table>
+              <Caption>Cats and Dogs Available</Caption>
+              <Thead>
+                <Tr>
+                  <Th>Name</Th>
+                  <Th>Type</Th>
+                  <Th align="right">Price</Th>
+                  <Th>Reference ID</Th>
+                  <Th>Actions</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {this.state.data.map(item => (
+                  <Tr key={item.id}>
+                    <Td dataLabel="Name">{item.name}</Td>
+                    <Td dataLabel="Type">{item.type}</Td>
+                    <Td dataLabel="Price" align="right">
+                      {item.price}
+                    </Td>
+                    <Td dataLabel="Reference">
+                      {item.id}-{item.reference}
+                    </Td>
+                    <Td dataLabel="Actions">
+                      <Link>Adopt</Link> | <Link>Ask Question</Link>
+                    </Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+
+            <PaginationBar
+              previousLabel="prev"
+              nextLabel="next"
+              pageCount={this.state.pageCount}
+              onPageChange={this.handlePageClick}
+            />
+
+            <hr />
+
+            <h1>Navigation bar organism</h1>
             <IconLabelNav
               label="Administration"
               onIconClick={() => console.log("clicked icon")}
@@ -101,8 +209,9 @@ class App extends Component {
               </NavBar>
             </IconLabelNav>
 
-            <h1>Buttons</h1>
+            <hr />
 
+            <h1>Buttons</h1>
             <div className="row">
               <div className="col-4">
                 <h3>Inline button menu</h3>
@@ -216,7 +325,6 @@ class App extends Component {
                 </MenuButton>
               </div>
             </div>
-
             <div className="row">
               <div className="col-lg-3">
                 <h3>Default Button</h3>
@@ -273,10 +381,8 @@ class App extends Component {
                 </p>
               </div>
             </div>
-
             <hr />
             <h1>Card</h1>
-
             <div className="row">
               <div className="col-6">
                 <Card>
@@ -300,14 +406,13 @@ class App extends Component {
                     Puppies are back!
                   </Header>
                   <DisplayText>
-                    We got a new shipment of puppies! Come see!
+                    We got a new shipment of puppies! Come see! We got a new
+                    shipment of puppies! Come see!
                   </DisplayText>
                 </Card>
               </div>
             </div>
-
             <hr />
-
             <h1>Typography: Display Text + Headers</h1>
             <div className="row">
               <div className="col-6">
@@ -348,7 +453,6 @@ class App extends Component {
                 </DisplayText>
               </div>
             </div>
-
             <div className="row">
               <div className="col-lg-4">
                 <Header>Header - default</Header>
@@ -401,9 +505,7 @@ class App extends Component {
                 </Header>
               </div>
             </div>
-
             <hr />
-
             <Table>
               <Caption>Pat Thompson / Customer #19583</Caption>
               <Thead>
@@ -496,7 +598,6 @@ class App extends Component {
                 </Tr>
               </Tbody>
             </Table>
-
             <hr />
             <h1>Breadcrumbs</h1>
             <BreadcrumbGroup>
@@ -506,7 +607,6 @@ class App extends Component {
               <Breadcrumb url="/bread4">Bread crumb 4</Breadcrumb>
             </BreadcrumbGroup>
             <hr />
-
             <h1>Order Form</h1>
             <div className="row">
               <div className="col-md-6">
@@ -651,9 +751,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-
             <hr />
-
             <h1>Sidebar: Animal Adoption</h1>
             <Sidebar onClick={this.handleNavChange}>
               <SidebarItem id="about">About</SidebarItem>
@@ -673,9 +771,7 @@ class App extends Component {
               </NavGroup>
               <SidebarItem id="contact">Contact Us</SidebarItem>
             </Sidebar>
-
             <hr />
-
             <h1>Links</h1>
             <p>
               We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
@@ -753,7 +849,6 @@ class App extends Component {
                 </Button>
               </ModalBody>
             </Modal>
-
             <hr />
             <h1>Alerts</h1>
             <Alert
