@@ -73,7 +73,8 @@ class App extends Component {
 
       // Pagination 2
       data: [],
-      offset: 0
+      offset: 0,
+      story: undefined
     };
 
     // This could be grabbed from the server, for instance, but we are hardcoding.
@@ -88,8 +89,12 @@ class App extends Component {
 
     this.ramenOptions = ["Onsen Egg", "Bamboo Shoots", "Pork Belly", "Enoki"];
     this.menuOptions = ["Account", "Settings", "Logout"];
+    this.setDelayedStories = this.setDelayedStories.bind(this);
   }
 
+  componentWillMount() {
+    this.setDelayedStories();
+  }
   doClick(e) {
     console.log("[sandbox] clicked");
   }
@@ -140,6 +145,20 @@ class App extends Component {
 
   componentDidMount() {
     this.loadPaginationData();
+  }
+
+  // faking async data
+  setDelayedStories() {
+    setTimeout(() => {
+      const rand1 = Math.ceil(Math.random() * 100);
+      const rand2 = Math.ceil(Math.random() * 100);
+      this.setState({
+        story: `My cat has ${rand1} fish chips.`,
+        story2: `My cat has ${rand2} fish chips.`
+      });
+
+      console.log("[set delayed]");
+    }, 1000);
   }
 
   render() {
@@ -751,6 +770,29 @@ class App extends Component {
                 </div>
               </div>
             </div>
+
+            <hr />
+            <h1>Controlled textarea and input fields with delayed data</h1>
+            <Textarea
+              id="my-textarea2"
+              value={this.state.story}
+              label="My Cat's Story"
+              onChange={e => console.log("Changed:", e)}
+            />
+
+            <Textarea
+              id="my-textarea3"
+              value={this.state.story}
+              label="My Cat's Story (again)"
+              disabled
+            />
+
+            <WrappedInputLabel
+              value={this.state.story2}
+              label="Revision to story"
+              onChange={e => console.log("Changed:", e)}
+            />
+
             <hr />
             <h1>Sidebar: Animal Adoption</h1>
             <Sidebar onClick={this.handleNavChange}>
