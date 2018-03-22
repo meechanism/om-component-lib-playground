@@ -17,7 +17,6 @@ import {
   NavBarItem,
   NavGroup,
   Link,
-  UnstyledLink,
   Sidebar,
   SidebarItem,
   PasswordField,
@@ -41,7 +40,9 @@ import {
   Chevron,
   Close,
   Calendar,
-  Ellipsis
+  Ellipsis,
+  Select,
+  Option
 } from "@westfield/om-react-components";
 
 import getRandomInt from "./utilities/random-int";
@@ -365,7 +366,7 @@ class App extends Component {
                   Secondary Small
                 </Button>
 
-                <Button type="disabled" size="small">
+                <Button disabled size="small">
                   Disabled Small
                 </Button>
               </div>
@@ -375,7 +376,7 @@ class App extends Component {
                 <Button type="secondary" size="large">
                   Secondary Large
                 </Button>
-                <Button type="disabled" size="large">
+                <Button disabled size="large">
                   Disabled Large
                 </Button>
               </div>
@@ -655,6 +656,24 @@ class App extends Component {
                     console.log("Picked fruit: ", selectedItem)
                   }
                 />
+
+                <Select
+                  id="my-favorite-animal"
+                  label="My Favorite Animal"
+                  onChange={val => console.log("New option: ", val)}
+                >
+                  <Option value="cat">Cat</Option>
+                  <Option value="dog">Dog</Option>
+                  <Option value="guinea-pig">Guinea Pig</Option>
+                  <Option value="tortoise" disabled>
+                    Tortoise
+                  </Option>
+                </Select>
+
+                <Select disabled label="My Favorite Bread">
+                  <Option value="rye">Rye</Option>
+                  <Option value="wheat">Wheat</Option>
+                </Select>
               </div>
               <div className="col-md-6">
                 <div className="row">
@@ -765,7 +784,7 @@ class App extends Component {
                     <Button type="secondary">Save</Button>
                   </div>
                   <div className="col-4">
-                    <Button type="disabled">Rush</Button>
+                    <Button disabled>Rush</Button>
                   </div>
                 </div>
               </div>
@@ -816,11 +835,10 @@ class App extends Component {
             <hr />
             <h1>Links</h1>
             <p>
-              We have a <UnstyledLink url="/local">Local link</UnstyledLink> and
-              also an{" "}
-              <UnstyledLink url="http://www.google.com" external>
+              We have a <Link url="/local">Local link</Link> and also an{" "}
+              <Link url="http://www.google.com" external>
                 External Link
-              </UnstyledLink>{" "}
+              </Link>{" "}
               (that will open up in a new tab).
             </p>
             <hr />
