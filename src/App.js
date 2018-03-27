@@ -42,7 +42,8 @@ import {
   Calendar,
   Ellipsis,
   Select,
-  Option
+  Option,
+  SyntaxHighlighter
 } from "@westfield/om-react-components";
 
 import getRandomInt from "./utilities/random-int";
@@ -167,6 +168,22 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <h1>SyntaxHighlighter</h1>
+            <SyntaxHighlighter>
+              {`loadPaginationData() {
+  // Can replace this with an api call to grab data with an offset + size
+  const data = this.exampleItems.slice(
+    this.state.offset,
+    this.state.offset + this.itemsPerPage
+  );
+  this.setState({
+    data: data,
+    pageCount: Math.ceil(this.exampleItems.length / this.itemsPerPage)
+  });
+}`}
+            </SyntaxHighlighter>
+            <hr />
+
             <h1>Icons</h1>
             <Chevron direction={1} />
             <Close />
@@ -417,11 +434,7 @@ class App extends Component {
                 </Card>
               </div>
               <div className="col-6">
-                <Card
-                  type="linked"
-                  renderArrow
-                  onClick={() => console.log("Clicked card")}
-                >
+                <Card renderArrow onClick={() => console.log("Clicked card")}>
                   <Header centered divider="primary" element="h3">
                     Puppies are back!
                   </Header>
@@ -659,6 +672,7 @@ class App extends Component {
 
                 <Select
                   id="my-favorite-animal"
+                  selectedOption="guinea-pig"
                   label="My Favorite Animal"
                   onChange={val => console.log("New option: ", val)}
                 >
@@ -733,7 +747,13 @@ class App extends Component {
 
                 <div className="row">
                   <div className="col-sm-6">
-                    <RadioGroup label="Veggies" name={"veggie-option"}>
+                    <RadioGroup
+                      label="Veggies"
+                      name={"veggie-option"}
+                      onChange={(e, newVal) =>
+                        console.log("Radio change: ", e, newVal)
+                      }
+                    >
                       <Radio id="veggie1" value="cabbage">
                         Cabbage
                       </Radio>

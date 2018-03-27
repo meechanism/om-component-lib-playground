@@ -22,7 +22,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-scripts": "^1.1.1",
-    "@westfield/om-react-components": "^0.1.29",
+    "@westfield/om-react-components": "^0.1.31",
     "@westfield/one-base": "^0.1.22",
     "@westfield/one-grid": "^0.1.22",
     "@westfield/one-utilities": "^0.1.22",
