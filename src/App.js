@@ -76,7 +76,8 @@ class App extends Component {
       // Pagination 2
       data: [],
       offset: 0,
-      story: undefined
+      story: undefined,
+      selectedOption: null
     };
 
     // This could be grabbed from the server, for instance, but we are hardcoding.
@@ -91,11 +92,11 @@ class App extends Component {
 
     this.ramenOptions = ["Onsen Egg", "Bamboo Shoots", "Pork Belly", "Enoki"];
     this.menuOptions = ["Account", "Settings", "Logout"];
-    this.setDelayedStories = this.setDelayedStories.bind(this);
+    this.setDelayedData = this.setDelayedData.bind(this);
   }
 
   componentWillMount() {
-    this.setDelayedStories();
+    this.setDelayedData();
   }
   doClick(e) {
     console.log("[sandbox] clicked");
@@ -150,13 +151,14 @@ class App extends Component {
   }
 
   // faking async data
-  setDelayedStories() {
+  setDelayedData() {
     setTimeout(() => {
       const rand1 = Math.ceil(Math.random() * 100);
       const rand2 = Math.ceil(Math.random() * 100);
       this.setState({
         story: `My cat has ${rand1} fish chips.`,
-        story2: `My cat has ${rand2} fish chips.`
+        story2: `My cat has ${rand2} fish chips.`,
+        selectedOption: "guinea-pig"
       });
 
       console.log("[set delayed]");
@@ -672,7 +674,7 @@ class App extends Component {
 
                 <Select
                   id="my-favorite-animal"
-                  selectedOption="guinea-pig"
+                  selectedOption={this.state.selectedOption}
                   label="My Favorite Animal"
                   onChange={val => console.log("New option: ", val)}
                 >
