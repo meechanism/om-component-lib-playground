@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {},
   "scripts": {
-    "dev:install": "npm install && npm link @westfield/om-react-components",
+    "dev:install": "npm install && npm link @westfield/om-react-components && npm link @westfield/one-utilities",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
@@ -22,7 +22,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-scripts": "^1.1.1",
-    "@westfield/om-react-components": "^0.1.32",
+    "@westfield/om-react-components": "^0.1.40",
     "@westfield/one-base": "^0.1.22",
     "@westfield/one-grid": "^0.1.22",
     "@westfield/one-utilities": "^0.1.22",

@@ -158,11 +158,19 @@ class App extends Component {
       this.setState({
         story: `My cat has ${rand1} fish chips.`,
         story2: `My cat has ${rand2} fish chips.`,
-        selectedOption: "guinea-pig"
+        selectedOption: "guinea-pig",
+
+        // For sidebar
+        sidebarOption: "cat-calico",
+        sidebarId: "cat-calico",
+        sidebarNavGroupId: "cats",
+        sidebarNavGroupId2: "shorthairs"
       });
 
       console.log("[set delayed]");
     }, 1000);
+
+    // For sidebar
   }
 
   render() {
@@ -375,7 +383,10 @@ class App extends Component {
                 <Button onClick={this.doClick}>Default Button (clickme)</Button>
 
                 <h3>Others</h3>
-                <Button type="danger">Ddddanger Zone</Button>
+                <Button color="danger">Ddddanger Zone</Button>
+                <Button type="secondary" color="danger">
+                  Ddddanger Zone
+                </Button>
               </div>
               <div className="col-lg-3">
                 <h3>Button Small</h3>
@@ -436,7 +447,7 @@ class App extends Component {
                 </Card>
               </div>
               <div className="col-6">
-                <Card renderArrow onClick={() => console.log("Clicked card")}>
+                <Card arrow onClick={() => console.log("Clicked card")}>
                   <Header centered divider="primary" element="h3">
                     Puppies are back!
                   </Header>
@@ -645,11 +656,16 @@ class App extends Component {
             <h1>Order Form</h1>
             <div className="row">
               <div className="col-md-6">
+                <WrappedInputLabel label="Test Label" value="Testme" />
                 <WrappedInputLabel
-                  small
-                  label="Name"
-                  onChange={e => console.log("Changed:", e)}
+                  id="vehicle-name"
+                  type="text"
+                  label="Vehicle Name"
+                  placeholder="Audi"
+                  error="my errors"
+                  value="my names"
                 />
+
                 <WrappedInputLabel label={"Email"} type={"email"} />
                 <PasswordField id="my-pass-field" />
                 <WrappedInputLabel
@@ -836,23 +852,43 @@ class App extends Component {
 
             <hr />
             <h1>Sidebar: Animal Adoption</h1>
-            <Sidebar onClick={this.handleNavChange}>
+            <Sidebar
+              selectedId={this.state.sidebarId}
+              selectedNavGroupId={this.state.sidebarNavGroupId}
+              selectedNavGroupId2={this.state.sidebarNavGroupId2}
+              onClick={this.handleNavChange}
+            >
               <SidebarItem id="about">About</SidebarItem>
-              <SidebarItem id="adopt" isDisabled>
+              <SidebarItem id="adopt" disabled>
                 Adopt (not available)
               </SidebarItem>
               <NavGroup title="Cats" id="cats">
                 <SidebarItem id="cat-blue">Blue Russian</SidebarItem>
                 <SidebarItem id="cat-calico">Calico</SidebarItem>
-                <SidebarItem id="cat-exotic">Exotic Short Hair</SidebarItem>
+                <NavGroup title="Short Hairs" id="shorthairs">
+                  <SidebarItem id="cat-sh-american">American</SidebarItem>
+                  <SidebarItem id="cat-sh-british">British</SidebarItem>
+                  {/* This level is currently not supported for setting defaults
+              <NavGroup title="Exotic" id="exotic">
+                <SidebarItem id="cat-sh-exotic-grey">Grey</SidebarItem>
+              </NavGroup> */}
+                </NavGroup>
               </NavGroup>
               <NavGroup title="Dogs" id="dogs">
                 <SidebarItem id="dog-aussie">Australian Shepard</SidebarItem>
-                <SidebarItem id="dog-boston">Boston Terrier</SidebarItem>
                 <SidebarItem id="dog-corgi">Corgi</SidebarItem>
                 <SidebarItem id="dog-shibe">Shiba Inu</SidebarItem>
+                <NavGroup title="Terrier (not available)" id="terrier" disabled>
+                  <SidebarItem id="dog-terrier">Boston</SidebarItem>
+                </NavGroup>
               </NavGroup>
-              <SidebarItem id="contact">Contact Us</SidebarItem>
+              <SidebarItem
+                id="contact"
+                external
+                url="http://onemarketnetwork.com"
+              >
+                Contact Us (external link)
+              </SidebarItem>
             </Sidebar>
             <hr />
             <h1>Links</h1>

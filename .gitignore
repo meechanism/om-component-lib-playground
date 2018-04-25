@@ -5,3 +5,4 @@ dist/bundle.js
 *.vscode
 dist
 package-lock.json
+*.css
