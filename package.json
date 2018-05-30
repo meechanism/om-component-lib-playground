@@ -18,15 +18,16 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "radium": "^0.22.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-scripts": "^1.1.1",
-    "@westfield/om-react-components": "^0.1.40",
-    "@westfield/one-base": "^0.1.22",
-    "@westfield/one-grid": "^0.1.22",
-    "@westfield/one-utilities": "^0.1.22",
+    "@westfield/om-react-components": "^0.2.1",
+    "@westfield/one-base": "^0.2.1",
+    "@westfield/one-grid": "^0.2.1",
+    "@westfield/one-styles": "^0.2.1",
+    "@westfield/one-utilities": "^0.2.1",
     "node-sass-chokidar": "^1.1.0",
-    "npm-run-all": "^4.1.2"
+    "npm-run-all": "^4.1.2",
+    "radium": "^0.22.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "^1.1.1"
   }
 }
