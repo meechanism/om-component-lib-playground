@@ -18,11 +18,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@westfield/om-react-components": "^0.2.1",
-    "@westfield/one-base": "^0.2.1",
-    "@westfield/one-grid": "^0.2.1",
-    "@westfield/one-styles": "^0.2.1",
-    "@westfield/one-utilities": "^0.2.1",
+    "@westfield/om-react-components": "^0.4.0",
+    "@westfield/one-base": "^0.4.0",
+    "@westfield/one-grid": "^0.4.0",
+    "@westfield/one-styles": "^0.4.0",
+    "@westfield/one-utilities": "^0.4.0",
     "node-sass-chokidar": "^1.1.0",
     "npm-run-all": "^4.1.2",
     "radium": "^0.22.1",
