@@ -18,7 +18,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "@westfield/om-react-components": "^0.4.0",
+    "@westfield/om-react-components": "^0.4.6",
     "@westfield/one-base": "^0.4.0",
     "@westfield/one-grid": "^0.4.0",
     "@westfield/one-styles": "^0.4.0",
@@ -28,6 +28,7 @@
     "radium": "^0.22.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "^1.1.1"
+    "react-scripts": "^1.1.1",
+    "styled-components": "^3.4.4"
   }
 }
